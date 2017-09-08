@@ -1,3 +1,9 @@
-<p>
-  navbar works!
-</p>
+<nav class="navbar navbar-light bg-light">
+   <a class="navbar-brand" href="#">{{ nomeApp }}</a>
+   
+  <app-menu *ngIf="usuarioLogado; else login">
+   
+  </app-menu>
+
+  <ng-template #login><app-login></app-login></ng-template>
+</nav>

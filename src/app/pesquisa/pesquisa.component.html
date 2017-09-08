@@ -1,0 +1,23 @@
+<h3>Pesquisar</h3>
+<form>
+  <div class="form-group">
+    <label for="exampleSelect1">Escolha uma Categoria</label>
+    <select class="form-control" id="exampleSelect1">
+      <option *ngFor="let categoria of categorias">{{ categoria.nome }}</option>
+    </select>
+  </div>         
+  <div class="form-group">
+    <label for="exampleSelect1">Escolha o Serviço</label>
+    <select class="form-control" id="exampleSelect1">
+      <option>Eletricista</option>
+      <option>Babá</option>
+      <option>Contador</option>
+      <option value="">Advogado</option>
+      <option value="">Barbeiro</option>
+      <option value="">Professor</option>
+      <option value="">Programador</option>
+    </select>
+  </div>
+  <a href="resultadoPesquisaProfissional.html" class="btn btn-success " role="button" aria-pressed="true">Pesquisa</a>
+</form>
+

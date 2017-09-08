@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { DestaqueComponent } from './destaque/destaque.component';
 import { MenuComponent } from './menu/menu.component';
 import { AnunciosComponent } from './anuncios/anuncios.component';
+import { PesquisaComponent } from './pesquisa/pesquisa.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AnunciosComponent } from './anuncios/anuncios.component';
     LoginComponent,
     DestaqueComponent,
     MenuComponent,
-    AnunciosComponent
+    AnunciosComponent,
+    PesquisaComponent
   ],
   imports: [
     BrowserModule

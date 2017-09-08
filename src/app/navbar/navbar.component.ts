@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   nomeApp: String = 'Portal de Serviços de Sobral';
-  usuarioLogado: Boolean = true;
+  usuarioLogado: Boolean = false;
 
   constructor() { }
 

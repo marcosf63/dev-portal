@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Categoria } from '../shared/categoria.model';
+import { Servico } from '../shared/servico.model'
 import { CATEGORIAS } from '../shared/categoria.mock';
+import { SERVICOS } from '../shared/servico.mock';
 
 @Component({
   selector: 'app-pesquisa',
@@ -10,6 +12,7 @@ import { CATEGORIAS } from '../shared/categoria.mock';
 export class PesquisaComponent implements OnInit {
   
   categorias : Categoria[] = CATEGORIAS;
+  servicos : Servico[] = SERVICOS;
 
   constructor() { }
 

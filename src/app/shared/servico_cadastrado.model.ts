@@ -1,5 +1,5 @@
-import { Servico } from './servico.model'
-import { Usuario } from './usuario.model'
+import { Servico } from './servico.model';
+import { Usuario } from './usuario.model';
 
 export class ServicoCadastrado {
     constructor(

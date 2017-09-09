@@ -1,7 +1,7 @@
 import { Plano } from './plano.model';
 
 export class Usuario {
-    
+
     constructor (
         public cd: number,
         public nome: string,
@@ -10,7 +10,7 @@ export class Usuario {
         public tipo: string,
         public endereco: string,
         public cidade: string,
-        public cep : string,
+        public cep: string,
         public telefoneFixo1: string,
         public telefoneFixo2: string,
         public celuliar1: string,

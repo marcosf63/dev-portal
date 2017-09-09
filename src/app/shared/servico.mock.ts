@@ -8,4 +8,4 @@ export const SERVICOS: Servico[] = [
     {cd: 1, nome: 'Barbeiro'},
     {cd: 1, nome: 'Professor'},
     {cd: 1, nome: 'Programador'}
-]
+];

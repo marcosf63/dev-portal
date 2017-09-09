@@ -20,8 +20,4 @@ export class Usuario {
         public in_pagamento_em_dia: string,
         public plano: Plano,
     ) {}
-
-    getTipo(): string {
-        return this.tipo;
-    }
 }

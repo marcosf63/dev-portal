@@ -3,7 +3,7 @@ import { Plano } from './plano.model';
 export class Usuario {
 
     constructor (
-        public cd: number,
+        public id: number,
         public nome: string,
         public email: string,
         public senha: string,
@@ -17,7 +17,8 @@ export class Usuario {
         public celular2: string,
         public foto: string,
         public situacao: string,
-        public in_pagamento_em_dia: string,
-        public plano: Plano,
+        public in_pf_pj: string,
+        public cpf: string,
+        public cnpj: string
     ) {}
 }

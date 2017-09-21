@@ -1,3 +1,3 @@
 export class Categoria {
-   constructor(public cd: Number, public nome: String) {}
+   constructor(public id: Number, public nome: String) {}
 }

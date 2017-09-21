@@ -1,3 +1,9 @@
+import { Categoria } from './categoria.model';
+
 export class Servico {
-    constructor(public cd: Number, public nome: String) {}
+    constructor(
+        public id: Number,
+        public nome: String,
+        public categoria: Categoria
+    ) {}
  }

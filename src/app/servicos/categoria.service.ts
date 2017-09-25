@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Anuncio } from '../shared/anuncio.model';
+import { Categoria } from '../shared/categoria.model';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class AnuncioService {
+export class CategoriaService {
     constructor(private http: Http) {}
-    public getAnuncios(): Promise<Anuncio[]> {
-        return this.http.get('http://localhost:3000/anuncios?in_exibir=S')
+    public getCategorias(): Promise<Categoria[]> {
+        return this.http.get('http://localhost:3000/categorias')
             .toPromise()
             .then((resposta: any) => resposta.json());
     }

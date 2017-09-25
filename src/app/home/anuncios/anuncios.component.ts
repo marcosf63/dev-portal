@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AnuncioService } from '../servicos/anuncio.service';
-import { Anuncio } from '../shared/anuncio.model';
+import { AnuncioService } from '../../servicos/anuncio.service';
+import { Anuncio } from '../../shared/anuncio.model';
 
 @Component({
   selector: 'app-anuncios',
@@ -15,14 +15,12 @@ export class AnunciosComponent implements OnInit {
   constructor(private anuncioService: AnuncioService) { }
 
   ngOnInit() {
-    // this.anuncioService.getAnuncios()
-    //   .then((anuncios: Anuncio[]) => {
-    //       this.anuncios = anuncios;
-    //       console.log(anuncios);
-    //   })
-    //   .catch(( param: any) => {
-    //       console.log(param);
-    //   });
+    this.anuncioService.getAnuncios()
+      .then((anuncios: Anuncio[]) => {
+          this.anuncios = anuncios;
+      })
+      .catch(( param: any) => {
+      });
   }
 
 }

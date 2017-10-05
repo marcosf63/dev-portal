@@ -4,8 +4,9 @@
     <label for="exampleSelect1">Escolha uma Categoria</label>
     <select 
       class="form-control" id="exampleSelect1" autofocus
-      (focus)="onChangeSelect(valorSelectCategoria.value)"
-      (change)="onChangeSelect(valorSelectCategoria.value)"
+      (focus)="onChangeSelectCategoria(valorSelectCategoria.value)"
+      (change)="onChangeSelectCategoria(valorSelectCategoria.value)"
+      
       #valorSelectCategoria
     >
       <option *ngFor="let categoria of categorias" value="{{ categoria.id }}">
@@ -15,11 +16,19 @@
   </div>         
   <div class="form-group">
     <label for="exampleSelect1">Escolha o Serviço</label>
-    <select class="form-control" id="exampleSelect1" #valorSelectServico>
-      <option *ngFor="let servico of servicos">{{ servico.nome }}</option>
-      #valorSelect
+    <select class="form-control" 
+      #valorSelectServico
+      >
+      <option *ngFor="let servico of servicos" value="{{ servico.id }}">
+        {{ servico.nome }} 
+      </option>
+      
     </select>
   </div>
-  <a href="resultadoPesquisaProfissional.html" class="btn btn-success " role="button" aria-pressed="true">Pesquisa</a>
+  <button type="button" 
+          class="btn btn-success"
+          (click)=buscaServico(valorSelectServico.value)>
+    Pesquisa
+  </button>
 </form>
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Anuncio } from '../shared/anuncio.model';
+import { Anuncio } from '../modelos/anuncio.model';
 
 import 'rxjs/add/operator/toPromise';
 

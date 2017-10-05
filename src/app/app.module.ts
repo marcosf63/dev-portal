@@ -6,14 +6,15 @@ import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { LoginComponent } from './navbar/login/login.component';
-import { DestaqueComponent } from './home/destaque/destaque.component';
-import { MenuComponent } from './navbar/menu/menu.component';
-import { AnunciosComponent } from './home/anuncios/anuncios.component';
-import { PesquisaComponent } from './home/destaque/pesquisa/pesquisa.component';
-import { CadastroComponent } from './cadastro/cadastro.component';
-import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './componentes/navbar/navbar.component';
+import { LoginComponent } from './componentes/navbar/login/login.component';
+import { DestaqueComponent } from './componentes/home/destaque/destaque.component';
+import { MenuComponent } from './componentes/navbar/menu/menu.component';
+import { AnunciosComponent } from './componentes/home/anuncios/anuncios.component';
+import { PesquisaComponent } from './componentes/home/destaque/pesquisa/pesquisa.component';
+import { CadastroComponent } from './componentes/cadastro/cadastro.component';
+import { HomeComponent } from './componentes/home/home.component';
+import { ResultadoPesquisaProComponent } from './componentes/resultado-pesquisa-pro/resultado-pesquisa-pro.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HomeComponent } from './home/home.component';
     AnunciosComponent,
     PesquisaComponent,
     CadastroComponent,
-    HomeComponent
+    HomeComponent,
+    ResultadoPesquisaProComponent
   ],
   imports: [
     BrowserModule,

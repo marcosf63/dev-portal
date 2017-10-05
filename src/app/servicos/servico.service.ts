@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Servico } from '../shared/servico.model';
+import { Servico } from '../modelos/servico.model';
 
 import 'rxjs/add/operator/toPromise';
 

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Categoria } from '../../../shared/categoria.model';
-import { Servico } from '../../../shared/servico.model';
-import { CategoriaService } from '../../../servicos/categoria.service';
-import { ServicoService } from '../../../servicos/servico.service'
+import { Router } from '@angular/router'
+import { Categoria } from '../../../../modelos/categoria.model';
+import { Servico } from '../../../../modelos/servico.model';
+import { CategoriaService } from '../../../../servicos/categoria.service';
+import { ServicoService } from '../../../../servicos/servico.service'
 
 
 @Component({
@@ -17,9 +18,11 @@ export class PesquisaComponent implements OnInit {
   servicos: Servico[] = [];
 
 
+
   constructor( 
     private categoriaService: CategoriaService,
-    private servicoService: ServicoService
+    private servicoService: ServicoService,
+    private router: Router
               
   ) { }
 
@@ -31,12 +34,19 @@ export class PesquisaComponent implements OnInit {
 
     
   }
-  onChangeSelect(valor) {
-    console.log(valor);
+  
+  onChangeSelectCategoria(valor) {
     this.servicoService.getSevicoPorCategoria(valor)
-      .then(
-        (resposta: any) => {this.servicos = resposta}
+      .then(           
+        (resposta: any) => {
+          this.servicos = resposta
+        }
       )
+
+  }
+
+  buscaServico(valor) {
+     this.router.navigateByUrl(`/resultadoPesquisaPro/${valor}`)
 
   }
 

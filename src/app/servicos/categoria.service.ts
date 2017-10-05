@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Categoria } from '../shared/categoria.model';
+import { Categoria } from '../modelos/categoria.model';
 
 import 'rxjs/add/operator/toPromise';
 

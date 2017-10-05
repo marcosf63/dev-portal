@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <h2>Resultado da pesquisa por {{ servico_buscado }}</h2>
+  </div>
+      
+    <div class="row">
+      <table class="table">
+
+        <thead class="thead-default">
+          <th>Foto</th>
+          <th>Nome</th>
+          <th>Dados para contato</th>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let servico of servicos">
+                <td><img src="{{ servico.usuario.foto }}" width="60" height="80" alt=""></td>
+                <td>{{ servico.usuario.nome }} {{ servico.usuario.id }}</td>
+                <td>
+                  <span class="badge badge-danger">Necessário login para acesso</span>
+                </td>
+            </tr>
+            
+        </tbody>
+
+      </table>
+    </div>
+</div>

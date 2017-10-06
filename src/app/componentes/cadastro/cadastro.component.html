@@ -5,10 +5,10 @@
        <div class="col-md-2">
 
        </div>
-
+       
        <div class="col-md-8" *ngIf="etapaAtual === 1">
          <h1>Tipo de Usuário - Etapa {{ etapaAtual }} de 4</h1>
-        <form>
+         <form>
           <fieldset class="form-group">
                <legend>Que tipo de usuário você é?</legend>
                <div class="form-check">
@@ -39,15 +39,12 @@
            <button (click)="proximo()" type="button" class="btn btn-success" *ngIf="etapaAtual < 4">
              Próximo
            </button>
-      
         </form>
-
-
        </div>
 
     <div class="col-md-8" *ngIf="etapaAtual === 2">
       <h1>Dados Pessoais - Etapa {{ etapaAtual }} de 4</h1>
-        <form>
+      <form>
           <div class="form-group">
                   <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nome">
                 </div>
@@ -100,7 +97,7 @@
               <button (click)="proximo()" type="button" class="btn btn-success" *ngIf="etapaAtual < 4">
                   Próximo
               </button>
-          </form>
+            </form>
 
 
     </div>
@@ -110,14 +107,17 @@
           <form>
             <div class="form-group">
               <label for="exampleSelect1">Escolha a categoria em seu serviço se enquadra:</label>
-              <select class="form-control" id="exampleSelect1">
-                <option>Servicos Domesticos</option>
-                <option>Reformas e Reparos</option>
-                <option>Consutoria</option>
-                <option>Tecnologia</option>
-                <option value="">Moda e Belaza</option>
-                <option value="">Aulas</option>
-              </select>
+              <select 
+              class="form-control" id="exampleSelect1" autofocus
+              (focus)="onChangeSelectCategoria(valorSelectCategoria.value)"
+              (change)="onChangeSelectCategoria(valorSelectCategoria.value)"
+              
+              #valorSelectCategoria
+            >
+              <option *ngFor="let categoria of categorias" value="{{ categoria.id }}">
+                {{ categoria.nome }}
+              </option>
+            </select>
               <small id="fileHelp" class="form-text text-muted">
                 Caso a categoria não exista envie um email para contato@portaldeservico.com.br para inclusão.
               </small>
@@ -155,7 +155,7 @@
 
       <div class="col-md-8" *ngIf="etapaAtual === 4">
           <h1>Dados do Plano - Etapa {{ etapaAtual }} de 4</h1>
-          <form>
+         <form>
                     <div class="row">
                       <div class="card" style="width: 30%;margin: 10px 10px 10px 10px;">
                          <h4 class="card-header"  >Plano 1</h4>
@@ -239,11 +239,11 @@
                      <button  type="button" class="btn btn-success" *ngIf="etapaAtual === 4">
                         Salvar
                      </button>
-                    </form>
                     
-          
+                            
+                  </form>
       </div>
-
+    
        <div class="col-md-2">
 
        </div>

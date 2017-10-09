@@ -1,0 +1,58 @@
+
+<h1>Dados Profissionais - Etapa 3 de 4</h1>
+<form>
+  <div class="form-group">
+    <label for="exampleSelect1">Escolha a categoria em seu serviço se enquadra:</label>
+    <select #valorSelectCategoria
+        class="form-control" id="exampleSelect1" autofocus
+        (focus)="onChangeSelectCategoria(valorSelectCategoria.value)"
+        (change)="onChangeSelectCategoria(valorSelectCategoria.value)"
+    >
+      <option *ngFor="let categoria of categorias" value="{{ categoria.nome }}">
+        {{ categoria.nome }}
+      </option>
+    </select>
+    <small class="form-text text-muted">
+      Caso a categoria não exista envie um email para contato@portaldeservico.com.br para inclusão.
+    </small>
+  </div>
+  <div class="form-group">
+    <label for="">Escolha o serviço que você vai prestar:</label>
+    <select class="form-control" #valorSelectServico>
+      <option *ngFor="let servico of servicos" value="{{ servico.nome }}">
+        {{ servico.nome }} 
+      </option> 
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="">Descreva o serviço que você prestar</label>
+    <textarea class="form-control" name="descricao" rows="3"></textarea>
+    <small class="form-text text-muted">
+      A descriçao vai aparecer nos anúncios na página prinicpal do site!
+    </small>
+  </div>
+  <button type="button" class="btn btn-success"
+    (click)="incluirServico(valorSelectServico.value, valorSelectCategoria.value)">
+      Incluir servico
+  </button>
+  <small class="form-text text-muted" *ngIf="nr_servicos > 0">
+      Você pode inclir até {{ nr_servicos }} servicos.
+  </small>
+  <small class="form-text text-muted" *ngIf="nr_servicos === 0">
+      Você pode inclir não pode mais incluir servicos.
+  </small>
+  <br>
+  <div *ngIf="nr_servicos < 3">
+      <table class="table">
+          <tr *ngFor="let servico_incluido of servicos_incluidos">
+            <td #celulaID >{{servico_incluido.id}}</td>
+            <td>{{servico_incluido.categoria.nome}}</td>
+            <td>{{servico_incluido.nome}}</td>
+            <td><span (click)="removerServico(celulaID)"class="badge badge-danger">Remover</span></td>
+          </tr>
+      </table>
+  </div>
+  <br> 
+  <a class="btn btn-success" routerLink="../etapa2" role="button">Anterior</a>
+  <a class="btn btn-success" routerLink="../etapa4" role="button">Próximo</a>
+</form>

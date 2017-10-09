@@ -1,0 +1,30 @@
+<h1>Tipo de Usuário - Etapa 1 de 4</h1>
+
+<form #formEtapa1="ngForm" (ngSubmit)="etapa2()" novalidate>
+  <div class="form-group">
+    <legend>Que tipo de usuário você é?</legend>
+    <div class="form-check">
+      <label class="form-check-label">
+      <input #pf type="radio" class="form-check-input" name="pf_ou_pj"  value="PF" ngModel required>
+          Pessoa Física
+      </label> 
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <label class="form-check-label">
+      <input type="radio" class="form-check-input" name="pf_ou_pj"  value="PJ" ngModel required>
+        Pessoa Jurídica
+      </label>
+    </div>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+    <input type="checkbox" class="form-check-input" name="prestador" ngModel>
+      Vai prestar algum serviço?
+    </label>
+  </div>
+    <small *ngIf="formularioInvalido">Preencha o formulário corretamente escolhendo PF ou PJ</small>
+    <br>
+    <button type="submit" class="btn btn-success">Próximo</button>
+</form>

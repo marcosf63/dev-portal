@@ -21,7 +21,9 @@ import { Etapa2Component } from './componentes/cadastro/etapa2/etapa2.component'
 import { Etapa3Component } from './componentes/cadastro/etapa3/etapa3.component';
 import { Etapa4Component } from './componentes/cadastro/etapa4/etapa4.component';
 
-import { CadastroService } from './servicos/cadastro.service'
+import { CadastroService } from './servicos/cadastro.service';
+import { FinalCadastroComponent } from './componentes/cadastro/final-cadastro/final-cadastro.component';
+import { ConteudoComponent } from './componente/conteudo/conteudo.component'
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { CadastroService } from './servicos/cadastro.service'
     Etapa1Component,
     Etapa2Component,
     Etapa3Component,
-    Etapa4Component
+    Etapa4Component,
+    FinalCadastroComponent,
+    ConteudoComponent
   ],
   imports: [
     BrowserModule,

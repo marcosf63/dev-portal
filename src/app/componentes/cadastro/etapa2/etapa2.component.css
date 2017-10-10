@@ -2,3 +2,10 @@
     width: 30%;
     margin: 10px 10px 10px 10px;
 }
+.btn-success {
+  margin: 3px
+}
+
+small {
+    color: red
+}

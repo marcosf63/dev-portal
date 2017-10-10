@@ -1,21 +1,27 @@
 <h1>Dados do Plano - Etapa 2 de 4</h1>
-  <div class="row">
+<!-- <div class="row"> -->
+  <form class="form-row" #formEtapa2="ngForm" (ngSubmit)="etapa3()">
     <div class="card" *ngFor="let plano of planos">
       <h4 class="card-header"  >{{ plano.nome }}</h4>
       <div class="card-body">
-        <h4 class="card-title">{{ plano.periodicidade }}</h4>
-        <p class="card-text">
-          {{ plano.descricao }}
-          Preço: R$ {{ plano.valor }}
-        </p>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input type="checkbox" class="form-check-input">
-               Selecionar
-            </label>
-        </div>
+          <h4 class="card-title">{{ plano.periodicidade }}</h4>
+          <p class="card-text">
+              {{ plano.descricao }}
+              Preço: R$ {{ plano.valor }}
+          </p>
+          <div class="form-check">
+              <label class="form-check-label">
+              <input type="radio" class="form-check-input" value="{{ plano.nome }}" name="plano" ngModel required>
+              Selecionar
+              </label>
+          </div>
       </div>
     </div>
-  </div>
-  <a class="btn btn-success" routerLink="../etapa1" role="button">Anterior</a>
-  <a class="btn btn-success" routerLink="../etapa3" role="button">Próximo</a>              
+    
+<a class="btn btn-success" routerLink="../etapa1" role="button">Anterior</a>
+<button type="submit" class="btn btn-success">Próximo</button>  
+</form>
+<small *ngIf="formulario_invalido">Selecione pelo menos um plano</small>
+<!-- </div> -->
+
+             

@@ -13,6 +13,8 @@ export class Etapa1Component implements OnInit {
 
   @ViewChild('formEtapa1') public formulario: NgForm
   public formularioInvalido: Boolean = false
+  public eh_pf_ou_pj: string = "PF"
+  public eh_prestador: Boolean
 
   constructor(private router: Router, private cadastroService: CadastroService) { }
 
@@ -20,15 +22,19 @@ export class Etapa1Component implements OnInit {
     
     //this.cadastroService.etapa1PfOuPj
     //this.formulario.value.prestador = this.cadastroService.etapa1Prestatador
-    console.log(this.formulario.control.controls)
+    this.eh_pf_ou_pj = this.cadastroService.etapa1PfOuPj
+    this.formulario.value.prestador = this.cadastroService.etapa1Prestatador
+    console.log("Calor servivo: " + this.cadastroService.etapa1Prestatador)
+    this.eh_prestador = this.cadastroService.etapa1Prestatador
     
   }
   etapa2() {
+    console.log(this.formulario.value.prestador)
+    console.log("valor form: " + this.eh_prestador)
     if (this.formulario.valid) {
       
-      this.cadastroService.etapa1PfOuPj = this.formulario.value.pf_ou_pj
+      this.cadastroService.etapa1PfOuPj = this.eh_pf_ou_pj
       this.cadastroService.etapa1Prestatador = (this.formulario.value.prestador === "" || this.formulario.value.prestador === false ? false : true)
-      console.log(this.formulario.control.controls.pf_ou_pj)
       if (this.cadastroService.etapa1Prestatador) {
         this.router.navigateByUrl('/cadastro/etapa2')
       } else {

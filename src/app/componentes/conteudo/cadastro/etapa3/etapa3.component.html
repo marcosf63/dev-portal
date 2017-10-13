@@ -1,13 +1,12 @@
 
 <h1>Dados Profissionais - Etapa 3 de 4</h1>
 <form #formEtapa3="ngForm" (ngSubmit)="etapa4()">
-  
 <div class="form-group">
     <label for="exampleSelect1">Escolha a categoria em seu serviço se enquadra:</label>
-    <select #valorSelectCategoria
+    <select name="valorSelectCategoria" ngModel
         class="form-control" id="exampleSelect1" autofocus required
-        (focus)="onChangeSelectCategoria(valorSelectCategoria.value)"
-        (change)="onChangeSelectCategoria(valorSelectCategoria.value)"
+        (focus)="onChangeSelectCategoria(formEtapa3.value.valorSelectCategoria)"
+        (change)="onChangeSelectCategoria(formEtapa3.value.valorSelectCategoria)"
     >
       <option value="" disabled>Selecione uma categoria</option>
       <option *ngFor="let categoria of categorias" value="{{ categoria.nome }}">
@@ -21,7 +20,8 @@
 
   <div class="form-group">
       <label for="">Escolha o serviço que você vai prestar:</label>
-      <select class="form-control" #valorSelectServico>
+      <select class="form-control" name="valorSelectServico" ngModel required>
+          <option value="" disabled>Selecione um serviço</option>
         <option *ngFor="let servico of servicos" value="{{ servico.nome }}">
           {{ servico.nome }} 
         </option> 
@@ -31,7 +31,7 @@
   
   <div class="form-group">
       <label for="">Descreva o serviço que você prestar</label>
-      <textarea class="form-control" name="descricao" rows="3"></textarea>
+      <textarea class="form-control" name="descricao" ngModel rows="3" required></textarea>
       <small class="form-text text-muted">
         A descriçao vai aparecer nos anúncios na página prinicpal do site!
       </small>
@@ -39,14 +39,17 @@
   
   
   <button type="button" class="btn btn-success"
-    (click)="incluirServico(valorSelectServico.value, valorSelectCategoria.value)">
+    (click)="incluirServico(formEtapa3.value.valorSelectServico, formEtapa3.value.valorSelectCategoria)">
       Incluir servico
   </button>
   <small class="form-text text-muted" *ngIf="nr_servicos > 0">
       Você pode inclir até {{ nr_servicos }} servicos.
   </small>
-  <small class="form-text text-muted" *ngIf="nr_servicos === 0">
+  <small class="form-text vermelho" *ngIf="nr_servicos === 0">
       Você não pode mais incluir servicos.
+  </small>
+  <small class="form-text vermelho" *ngIf="formularioInvalido">
+      E obrigatório os campos Categoria, Serviço e Descrição
   </small>
   <br>
   <div class="card" *ngIf="nr_servicos < 3">

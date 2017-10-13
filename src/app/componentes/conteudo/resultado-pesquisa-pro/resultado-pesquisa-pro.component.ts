@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ServicoCadastradoService } from '../../servicos/servicos-cadastrados.service'
+import { ServicoCadastradoService } from '../../../servicos/servicos-cadastrados.service'
 import { ActivatedRoute } from '@angular/router';
-import { ServicoCadastrado } from '../../modelos/servico_cadastrado.model'
+import { ServicoCadastrado } from '../../../modelos/servico_cadastrado.model'
 
 @Component({
   selector: 'app-resultado-pesquisa-pro',

@@ -11,7 +11,7 @@
           </p>
           <div class="form-check">
               <label class="form-check-label">
-              <input type="radio" class="form-check-input" value="{{ plano.nome }}" name="plano" ngModel required>
+              <input type="radio" class="form-check-input" value="{{ plano.nome }}" name="plano" [(ngModel)]="planoSelecionado" required>
               Selecionar
               </label>
           </div>
@@ -21,7 +21,7 @@
 <a class="btn btn-success" routerLink="../etapa1" role="button">Anterior</a>
 <button type="submit" class="btn btn-success">Próximo</button>  
 </form>
-<small *ngIf="formulario_invalido">Selecione pelo menos um plano</small>
+<small *ngIf="formularioInvalido">Selecione pelo menos um plano</small>
 <!-- </div> -->
 
              

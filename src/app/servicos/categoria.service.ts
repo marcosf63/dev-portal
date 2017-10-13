@@ -10,6 +10,6 @@ export class CategoriaService {
     public getCategorias(): Promise<Categoria[]> {
         return this.http.get('http://localhost:3000/categorias')
             .toPromise()
-            .then((resposta: any) => resposta.json());
+            .then((resposta: any) => resposta.json())
     }
 }

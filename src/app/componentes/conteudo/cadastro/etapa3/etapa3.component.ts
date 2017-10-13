@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Categoria } from '../../../modelos/categoria.model';
-import { Servico } from '../../../modelos/servico.model';
-import { CategoriaService } from '../../../servicos/categoria.service';
-import { ServicoService } from '../../../servicos/servico.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { Categoria } from '../../../../modelos/categoria.model';
+import { Servico } from '../../../../modelos/servico.model';
+import { CategoriaService } from '../../../../servicos/categoria.service';
+import { ServicoService } from '../../../../servicos/servico.service';
+import { CadastroService } from '../../../../servicos/cadastro.service'
 
 @Component({
   selector: 'app-etapa3',
@@ -16,10 +19,14 @@ export class Etapa3Component implements OnInit {
   servicos: Servico[] = []
   servicos_incluidos: Servico[] = []
   nr_servicos = 3
+  @ViewChild('formEtapa3') public formulario: NgForm
+  formularioInvalido = false
 
   constructor(
     private categoriaService: CategoriaService,
-    private servicoService: ServicoService
+    private servicoService: ServicoService,
+    private cadastroService: CadastroService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -57,5 +64,16 @@ export class Etapa3Component implements OnInit {
   removerServico(par){
     console.log(par)
   }
+
+  etapa4() {
+    if (this.formulario.valid) {
+     this.router.navigateByUrl('/cadastro/etapa3')
+    } else {
+       
+       this.formularioInvalido = true
+ 
+    }
+
+ }
 
 }

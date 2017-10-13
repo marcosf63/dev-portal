@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms'
 import { Router } from '@angular/router';
-import { CadastroService } from '../../../servicos/cadastro.service'
+import { CadastroService } from '../../../../servicos/cadastro.service'
 
 
 @Component({
@@ -19,18 +19,12 @@ export class Etapa1Component implements OnInit {
   constructor(private router: Router, private cadastroService: CadastroService) { }
 
   ngOnInit() {
-    
-    //this.cadastroService.etapa1PfOuPj
-    //this.formulario.value.prestador = this.cadastroService.etapa1Prestatador
     this.eh_pf_ou_pj = this.cadastroService.etapa1PfOuPj
     this.formulario.value.prestador = this.cadastroService.etapa1Prestatador
-    console.log("Calor servivo: " + this.cadastroService.etapa1Prestatador)
     this.eh_prestador = this.cadastroService.etapa1Prestatador
     
   }
   etapa2() {
-    console.log(this.formulario.value.prestador)
-    console.log("valor form: " + this.eh_prestador)
     if (this.formulario.valid) {
       
       this.cadastroService.etapa1PfOuPj = this.eh_pf_ou_pj

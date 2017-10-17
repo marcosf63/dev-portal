@@ -3,10 +3,10 @@
 <form #formEtapa3="ngForm" (ngSubmit)="etapa4()">
 <div class="form-group">
     <label for="exampleSelect1">Escolha a categoria em seu serviço se enquadra:</label>
-    <select name="valorSelectCategoria" ngModel
+    <select name="categoria" ngModel
         class="form-control" id="exampleSelect1" autofocus required
-        (focus)="onChangeSelectCategoria(formEtapa3.value.valorSelectCategoria)"
-        (change)="onChangeSelectCategoria(formEtapa3.value.valorSelectCategoria)"
+        (focus)="onChangeSelectCategoria(formEtapa3.value.categoria)"
+        (change)="onChangeSelectCategoria(formEtapa3.value.categoria)"
     >
       <option value="" disabled>Selecione uma categoria</option>
       <option *ngFor="let categoria of categorias" value="{{ categoria.nome }}">
@@ -20,7 +20,7 @@
 
   <div class="form-group">
       <label for="">Escolha o serviço que você vai prestar:</label>
-      <select class="form-control" name="valorSelectServico" ngModel required>
+      <select class="form-control" name="servico" ngModel required>
           <option value="" disabled>Selecione um serviço</option>
         <option *ngFor="let servico of servicos" value="{{ servico.nome }}">
           {{ servico.nome }} 
@@ -39,20 +39,21 @@
   
   
   <button type="button" class="btn btn-success"
-    (click)="incluirServico(formEtapa3.value.valorSelectServico, formEtapa3.value.valorSelectCategoria)">
+    (click)="incluirServico(formEtapa3)">
       Incluir servico
   </button>
-  <small class="form-text text-muted" *ngIf="nr_servicos > 0">
-      Você pode inclir até {{ nr_servicos }} servicos.
+  <small class="form-text text-muted" *ngIf="servicos_incluidos.length < cadastroService.etapa2nr_servico">
+      Você pode inclir até {{ cadastroService.etapa2nr_servico - servicos_incluidos.length }} servicos.
   </small>
-  <small class="form-text vermelho" *ngIf="nr_servicos === 0">
+
+  <small class="form-text vermelho" *ngIf="servicos_incluidos.length === cadastroService.etapa2nr_servico">
       Você não pode mais incluir servicos.
   </small>
-  <small class="form-text vermelho" *ngIf="formularioInvalido">
+  <!-- <small class="form-text vermelho" *ngIf="formularioInvalido">
       E obrigatório os campos Categoria, Serviço e Descrição
-  </small>
+  </small> -->
   <br>
-  <div class="card" *ngIf="nr_servicos < 3">
+  <div class="card" *ngIf="servicos_incluidos.length > 0 ">
     <div class="card-header">
       Serviços Inluídos
     </div>
@@ -60,10 +61,9 @@
         
             <table class="table">
                 <tr *ngFor="let servico_incluido of servicos_incluidos">
-                  <td #celulaID >{{servico_incluido.id}}</td>
-                  <td>{{servico_incluido.categoria.nome}}</td>
-                  <td>{{servico_incluido.nome}}</td>
-                  <td><span (click)="removerServico(celulaID)"class="badge badge-danger">Remover</span></td>
+                  <td>{{servico_incluido.categoria}}</td>
+                  <td>{{servico_incluido.servico}}</td>
+                  <td><button (click)="removerServico(servico_incluido)" type="button" class="btn btn-success btn-sm">Remover</button></td>
                 </tr>
             </table>
         
@@ -72,5 +72,5 @@
   
   <br> 
   <a class="btn btn-success" routerLink="../etapa2" role="button">Anterior</a>
-  <a class="btn btn-success" routerLink="../etapa4" role="button">Próximo</a>
+  <button type="submit" class="btn btn-success">Próximo</button> 
 </form>

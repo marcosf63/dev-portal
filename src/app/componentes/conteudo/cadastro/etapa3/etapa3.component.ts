@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Categoria } from '../../../../modelos/categoria.model';
 import { Servico } from '../../../../modelos/servico.model';
+import { ServicoCadastrado } from '../../../../modelos/servico_cadastrado.model';
 import { CategoriaService } from '../../../../servicos/categoria.service';
 import { ServicoService } from '../../../../servicos/servico.service';
 import { CadastroService } from '../../../../servicos/cadastro.service'
@@ -17,11 +18,7 @@ export class Etapa3Component implements OnInit {
   
   categorias: Categoria[] = []
   servicos: Servico[] = []
-  servicos_incluidos: Servico[] = []
-  nr_servicos = 3
-  @ViewChild('formEtapa3') public formulario: NgForm
-  formularioInvalido = false
-  i: number = 1  // indice do serviço
+  servicos_incluidos: any [] = []
 
   constructor(
     private categoriaService: CategoriaService,
@@ -35,52 +32,36 @@ export class Etapa3Component implements OnInit {
     .then(
       (resposta: any) => {this.categorias = resposta}
     );
+    this.servicos_incluidos = this.cadastroService.etapa3ServicosIncluidos
   }
 
   onChangeSelectCategoria(valor) {
     this.servicoService.getSevicoPorCategoria(valor)
       .then(           
         (resposta: any) => {
-          console.log(resposta)
           this.servicos = resposta
         }
       )
 
   }
 
-  incluirServico(servico, categoria) {
-    
-    if (this.formulario.valid) {
-      if (this.nr_servicos > 0) {
-        this.nr_servicos--
-        console.log(this.i)
-        this.servicos_incluidos.push(new Servico(
-          this.i, servico, new Categoria(
-            this.i, categoria
-          )
-        ))
-        this.i++
-        
-     }
-     this.formularioInvalido = false
-    } else {
-      this.formularioInvalido = true
+  incluirServico(f) {
+    if ( this.servicos_incluidos.length < this.cadastroService.etapa2nr_servico ) {
+      this.servicos_incluidos.push(f.value)
     }
+
   }
 
-  removerServico(par){
-    console.log(par)
+  removerServico(servico){
+    if (this.servicos_incluidos.length > 0 ) {
+      this.servicos_incluidos.splice(this.servicos_incluidos.indexOf(servico),1)
+    }
+    
   }
 
   etapa4() {
-    if (this.formulario.valid) {
-     this.router.navigateByUrl('/cadastro/etapa3')
-    } else {
-       
-       this.formularioInvalido = true
- 
-    }
-
+     this.cadastroService.etapa3ServicosIncluidos = this.servicos_incluidos
+     this.router.navigateByUrl('/cadastro/etapa4')
  }
 
 }

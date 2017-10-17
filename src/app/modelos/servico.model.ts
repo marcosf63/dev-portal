@@ -2,8 +2,8 @@ import { Categoria } from './categoria.model';
 
 export class Servico {
     constructor(
-        public id: Number,
-        public nome: String,
-        public categoria: Categoria
+        public nome: string,
+        public categoria: Categoria,
+        public id?: number
     ) {}
  }

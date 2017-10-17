@@ -1,64 +1,65 @@
 
     <h1>Dados Pessoais - Etapa 4 de 4</h1>
-    <form>
+    <form #formEtapa4="ngForm" (ngSubmit)="salvar(formEtapa4)">
         <div class="form-group">
-            <input type="text" class="form-control" name="nome" placeholder="Nome">
+            <input type="text" class="form-control" name="nome" placeholder="Nome" ngModel>
         </div>
         <div class="form-group">
-          <input type="email" class="form-control" name="endereco"  placeholder="Endereço">
+          <input type="email" class="form-control" name="endereco"  placeholder="Endereço"ngModel >
           <small id="emailHelp" class="form-text text-muted">Rua, número e bairro.</small>
         </div>
         <div class="form-row">
           <div class="form-group col-md-5">
-            <input type="text" class="form-control" name="cidade" placeholder="Cidade">
+            <input type="text" class="form-control" name="cidade" placeholder="Cidade" ngModel>
           </div>
           <div class="form-group col-md-2">
-                <input type="text" class="form-control" name="uf" placeholder="UF">
+                <input type="text" class="form-control" name="uf" placeholder="UF" ngModel>
               </div>
           <div class="form-group col-md-5">
-            <input type="text" class="form-control" name="cep" placeholder="CEP">
+            <input type="text" class="form-control" name="cep" placeholder="CEP" ngModel>
           </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <input type="text" class="form-control" name="email" placeholder="Email">
+                <input type="text" class="form-control" name="email" placeholder="Email" ngModel>
             </div>
             <div class="form-group col-md-6">
-                <input type="password" class="form-control" name="senha" placeholder="Senha">
+                <input type="password" class="form-control" name="senha" placeholder="Senha" ngModel>
             </div>
         </div>
         <label for="">Telefones fixos:</label>
         <div class="form-row">
              <div class="form-group col-md-6">
-                <input type="text" class="form-control" name="fixo1" placeholder="Telefone 1">
+                <input type="text" class="form-control" name="fixo1" placeholder="Telefone 1" ngModel>
              </div>
              <div class="form-group col-md-6">
-                <input type="text" class="form-control" name="fixo2" placeholder="Telefone 2">
+                <input type="text" class="form-control" name="fixo2" placeholder="Telefone 2"ngModel>
              </div>
         </div>
         <label for="">Telefones celulares:</label>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <input type="text" class="form-control" name="celular1" placeholder="Celular 1">
+                <input type="text" class="form-control" name="celular1" placeholder="Celular 1" ngModel>
             </div>
             <div class="form-group col-md-6">
-                <input type="text" class="form-control" name="celular2" placeholder="Celular 2">
+                <input type="text" class="form-control" name="celular2" placeholder="Celular 2" ngModel>
             </div>
         </div>
         
         <div class="form-group">
           <label for="exampleInputFile">Selecione um foto:</label>
-          <input type="file" class="form-control-file" name="foto">
+          <input type="file" class="form-control-file" name="foto" ngModel (change)="getFile($event)">
           <small id="fileHelp" class="form-text text-muted">Um arquivo imagem no seu computador.</small>
         </div>
         <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input">
+                <input type="checkbox" class="form-check-input" name="deAcordo" ngModel >
                   Estou de acordo com os <a href="termosUso.html">Termos de Uso</a> do Serviço
             </label>
         </div>
         
         <a class="btn btn-success" routerLink="../etapa3" role="button">Anterior</a>
-        <a class="btn btn-success" routerLink="../final-cadastro" role="button">Salvar</a>
+        <!-- <a class="btn btn-success" routerLink="../final-cadastro" role="button">Salvar</a> -->
+        <button type="submit" class="btn btn-success">Salvar</button> 
      </form>
 

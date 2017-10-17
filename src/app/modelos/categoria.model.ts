@@ -1,3 +1,7 @@
 export class Categoria {
-   constructor(public id: Number, public nome: String) {}
+   constructor(
+       public nome: String,
+       public id?: number
+              
+    ) {}
 }

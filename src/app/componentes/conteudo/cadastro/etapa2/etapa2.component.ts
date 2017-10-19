@@ -14,9 +14,7 @@ import { CadastroService } from '../../../../servicos/cadastro.service'
 export class Etapa2Component implements OnInit {
 
   planos: Plano[] = []
-  @ViewChild('formEtapa2') public formulario: NgForm
   public formularioInvalido: Boolean = false
-  public planoSelecionado: String
 
   constructor(
     private planoService: PlanoService,
@@ -25,7 +23,6 @@ export class Etapa2Component implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.planoSelecionado = this.cadastroService.etapa2Plano
     this.planoService.getPlanosPorTipo(this.cadastroService.etapa1PfOuPj)
       .then(
         (resposta: any) => this.planos = resposta 
@@ -33,9 +30,13 @@ export class Etapa2Component implements OnInit {
       .catch((erro: any) => console.log("Erro corrido:" + erro))
   }
 
-  etapa3() {
-     if (this.formulario.valid) {
-      this.cadastroService.etapa2Plano = this.planoSelecionado
+  etapa3(f) {
+     if (f.valid) {
+      this.planos.forEach(p => {
+        if (p.nome === f.value.plano) {
+          this.cadastroService.etapa2Plano = p
+        }
+      });
       this.router.navigateByUrl('/cadastro/etapa3')
      } else {
         

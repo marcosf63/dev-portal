@@ -42,11 +42,11 @@
     (click)="incluirServico(formEtapa3)">
       Incluir servico
   </button>
-  <small class="form-text text-muted" *ngIf="servicos_incluidos.length < cadastroService.etapa2nr_servico">
-      Você pode inclir até {{ cadastroService.etapa2nr_servico - servicos_incluidos.length }} servicos.
+  <small class="form-text text-muted" *ngIf="servicos_incluidos.length < cadastroService.etapa2Plano.qt_servico">
+      Você pode inclir até {{ cadastroService.etapa2Plano.qt_servico - servicos_incluidos.length }} servicos.
   </small>
 
-  <small class="form-text vermelho" *ngIf="servicos_incluidos.length === cadastroService.etapa2nr_servico">
+  <small class="form-text vermelho" *ngIf="servicos_incluidos.length === cadastroService.etapa2Plano.qt_servico">
       Você não pode mais incluir servicos.
   </small>
   <!-- <small class="form-text vermelho" *ngIf="formularioInvalido">

@@ -5,6 +5,7 @@ import { Headers } from '@angular/http'
 import { apiUrl } from './data.service';
 import { Servico } from '../modelos/servico.model'
 import { Usuario } from '../modelos/usuario.model'
+import { Plano } from '../modelos/plano.model'
 import { ServicoCadastrado } from '../modelos/servico_cadastrado.model'
 
 import 'rxjs/add/operator/toPromise'
@@ -14,8 +15,8 @@ export class CadastroService {
    
   public etapa1PfOuPj: string
   public etapa1Prestatador: Boolean
-  public etapa2Plano: String
-  public etapa2nr_servico: number = 3
+  public etapa2Plano: Plano
+  //public etapa2nr_servico: number = 3
   public etapa3ServicosIncluidos: any[] = []
   public etapa4nome: string
   public etapa4endereco: string

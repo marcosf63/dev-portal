@@ -36,6 +36,7 @@ export class Etapa4Component implements OnInit {
   getFile(fileInput) {
     
     this.cadastroService.etapa4foto = fileInput.target.files[0]
+    console.log(this.cadastroService.etapa4foto)
   } 
 
 }

@@ -1,6 +1,6 @@
 <h1>Dados do Plano - Etapa 2 de 4</h1>
 <!-- <div class="row"> -->
-  <form class="form-row" #formEtapa2="ngForm" (ngSubmit)="etapa3()">
+  <form class="form-row" #formEtapa2="ngForm" (ngSubmit)="etapa3(formEtapa2)">
     <div class="card" *ngFor="let plano of planos">
       <h4 class="card-header"  >{{ plano.nome }}</h4>
       <div class="card-body">
@@ -11,8 +11,11 @@
           </p>
           <div class="form-check">
               <label class="form-check-label">
-              <input type="radio" class="form-check-input" value="{{ plano.nome }}" name="plano" [(ngModel)]="planoSelecionado" required>
-              Selecionar
+              <input type="radio" 
+                     class="form-check-input" 
+                     value="{{ plano.nome }}" name="plano" ngModel
+                    required>
+                     Selecionar
               </label>
           </div>
       </div>

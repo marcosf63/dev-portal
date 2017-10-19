@@ -46,7 +46,7 @@ export class Etapa3Component implements OnInit {
   }
 
   incluirServico(f) {
-    if ( this.servicos_incluidos.length < this.cadastroService.etapa2nr_servico ) {
+    if ( this.servicos_incluidos.length < this.cadastroService.etapa2Plano.qt_servico ) {
       this.servicos_incluidos.push(f.value)
     }
 

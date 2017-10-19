@@ -64,6 +64,7 @@ export class CadastroService {
     let headers: Headers = new Headers()
     let headers2: Headers = new Headers()
     headers.append('Content-Type', 'application/json')
+    headers.append('Content-Type', 'multipart/related')
 
     return this.http.post(
       `${apiUrl}/usuarios`, 
@@ -80,6 +81,8 @@ export class CadastroService {
             reposta => {
               console.log(resposta)
             }
+          ).catch(
+            erro => {console.log("Cheguei aqui!")}
           )
         }
       )

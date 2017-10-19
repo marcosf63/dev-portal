@@ -3,6 +3,7 @@ import { Http, RequestOptions } from '@angular/http';
 import { Headers } from '@angular/http'
 
 import { apiUrl } from './data.service';
+import { apiUrl2 } from './data.service';
 import { Servico } from '../modelos/servico.model'
 import { Usuario } from '../modelos/usuario.model'
 import { Plano } from '../modelos/plano.model'
@@ -61,7 +62,7 @@ export class CadastroService {
     )
      
     let headers: Headers = new Headers()
-
+    let headers2: Headers = new Headers()
     headers.append('Content-Type', 'application/json')
 
     return this.http.post(
@@ -72,7 +73,14 @@ export class CadastroService {
       .toPromise()
       .then(
         (resposta: any) => {
-          resposta.json().id  
+          let id = resposta.json().id
+          this.http.post(`${apiUrl2}/upload/${id}`, this.etapa4foto, new RequestOptions({ headers: headers2}))
+          .toPromise()
+          .then(
+            reposta => {
+              console.log(resposta)
+            }
+          )
         }
       )
   }

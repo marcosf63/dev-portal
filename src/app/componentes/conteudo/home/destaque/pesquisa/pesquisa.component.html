@@ -1,24 +1,23 @@
 <h3>Pesquisar</h3>
-<form #pesquisaForm="ngForm">
+<form #f="ngForm">
   <div class="form-group">
     <label >Escolha uma Categoria</label>
-    <select 
-      class="form-control" name="categoria2" autofocus ngModel
-      (focus)="onChangeSelectCategoria(pesquisaForm.value.categoria2)"
-      (change)="onChangeSelectCategoria(pesquisaForm.value.categoria2)"
+    <select class="form-control" 
+            name="categoriaSelect" 
+            ngModel
+            (change)=onChangeSelectCategoria(f)
     >
       <option value="" disabled>Selecione uma categoria</option>
-      <option *ngFor="let categoria of categorias" value="{{ categoria.nome }}">
-        {{ categoria.nome }}
+      <option *ngFor="let categoria of categorias" value="{{ categoria.id }}">
+        {{ categoria.name }}
       </option>
     </select>
-  </div>         
+  </div>   
   <div class="form-group">
     <label >Escolha o Serviço</label>
-    <select class="form-control" name="selectServico"
-      name="valorSelectServico"
-    >
-      <option *ngFor="let servico of servicos" value="servico.nome">
+    <select class="form-control" name="servicoSelect" ngModel>
+      <option value="" disabled>Selecione um serviço</option>
+      <option *ngFor="let servico of servicos" value="{{ servico.id }}">
         {{ servico.nome }} 
       </option>
       
@@ -26,7 +25,7 @@
   </div>
   <button type="button" 
           class="btn btn-success"
-          (click)=buscaServico(valorSelectServico.value)>
+          (click)=buscaServico(f.value.servicoSelect)>
     Pesquisa
   </button>
 </form>

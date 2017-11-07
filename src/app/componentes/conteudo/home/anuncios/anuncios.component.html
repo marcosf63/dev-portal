@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-md-3" *ngFor="let anuncio of anuncios">
       <div class="card">
-        <img class="card-img-top img-fluid " src="{{ anuncio.servico_cadastrado.usuario.foto }}" alt="Card image cap">
+        <img class="card-img-top img-fluid " src="{{ anuncio.foto }}" alt="Card image cap">
         <div class="card-body">
-          <h4 class="card-title">{{ anuncio.servico_cadastrado.servico.nome }}</h4>
-          <h5>{{ anuncio.servico_cadastrado.usuario.nome }}</h5>
-          <p class="card-text">{{ anuncio.servico_cadastrado.descricao }}</p>
+          <h4 class="card-title">{{ anuncio.servico }}</h4>
+          <h5>{{ anuncio.usuario }}</h5>
+          <p class="card-text">{{ anuncio.descricao }}</p>
           <a routerLink="/cadastro" class="btn btn-success " role="button" aria-pressed="true">Detalhes</a>
        </div>
       </div>

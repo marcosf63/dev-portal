@@ -1,16 +1,15 @@
 
 <h1>Dados Profissionais - Etapa 3 de 4</h1>
-<form #formEtapa3="ngForm" (ngSubmit)="etapa4()">
+<form #f="ngForm" (ngSubmit)="etapa4()">
 <div class="form-group">
     <label for="exampleSelect1">Escolha a categoria em seu serviço se enquadra:</label>
     <select name="categoria" ngModel
         class="form-control" id="exampleSelect1" autofocus required
-        (focus)="onChangeSelectCategoria(formEtapa3.value.categoria)"
-        (change)="onChangeSelectCategoria(formEtapa3.value.categoria)"
+        (change)="onChangeSelectCategoria(f)"
     >
-      <option value="" disabled>Selecione uma categoria</option>
-      <option *ngFor="let categoria of categorias" value="{{ categoria.nome }}">
-        {{ categoria.nome }}
+      <option value="" disabled>Selecione um serviço</option>
+      <option *ngFor="let categoria of categorias" value="{{ categoria.id }}">
+        {{ categoria.name }}
       </option>
     </select>
     <small class="form-text text-muted">
@@ -39,29 +38,25 @@
   
   
   <button type="button" class="btn btn-success"
-    (click)="incluirServico(formEtapa3)">
+    (click)="incluirServico(f)">
       Incluir servico
   </button>
-  <small class="form-text text-muted" *ngIf="servicos_incluidos.length < cadastroService.etapa2Plano.qt_servico">
-      Você pode inclir até {{ cadastroService.etapa2Plano.qt_servico - servicos_incluidos.length }} servicos.
+  <small class="form-text text-muted" *ngIf="servicos_incluidos.length < cadastroService.etapa2Plano_qt_servicos">
+      Você pode incluir até {{ cadastroService.etapa2Plano_qt_servicos - servicos_incluidos.length }} servicos.
   </small>
 
-  <small class="form-text vermelho" *ngIf="servicos_incluidos.length === cadastroService.etapa2Plano.qt_servico">
+  <small class="form-text vermelho" *ngIf="servicos_incluidos.length === cadastroService.etapa2Plano_qt_servicos">
       Você não pode mais incluir servicos.
   </small>
-  <!-- <small class="form-text vermelho" *ngIf="formularioInvalido">
-      E obrigatório os campos Categoria, Serviço e Descrição
-  </small> -->
   <br>
   <div class="card" *ngIf="servicos_incluidos.length > 0 ">
     <div class="card-header">
       Serviços Inluídos
     </div>
-    <div class="card-block">
+    <div class="card-block">  
         
             <table class="table">
                 <tr *ngFor="let servico_incluido of servicos_incluidos">
-                  <td>{{servico_incluido.categoria}}</td>
                   <td>{{servico_incluido.servico}}</td>
                   <td><button (click)="removerServico(servico_incluido)" type="button" class="btn btn-success btn-sm">Remover</button></td>
                 </tr>

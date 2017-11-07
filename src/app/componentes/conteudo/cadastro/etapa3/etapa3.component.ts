@@ -16,9 +16,9 @@ import { CadastroService } from '../../../../servicos/cadastro.service'
 })
 export class Etapa3Component implements OnInit {
   
-  categorias: Categoria[] = []
-  servicos: Servico[] = []
-  servicos_incluidos: any [] = []
+  public categorias: any[] = []
+  public servicos: any[] = []
+  public servicos_incluidos: any [] = []
 
   constructor(
     private categoriaService: CategoriaService,
@@ -30,13 +30,16 @@ export class Etapa3Component implements OnInit {
   ngOnInit() {
     this.categoriaService.getCategorias()
     .then(
-      (resposta: any) => {this.categorias = resposta}
+      (resposta: any) => {
+        this.categorias = resposta['categorias']
+        console.log(this.categorias)
+      }
     );
     this.servicos_incluidos = this.cadastroService.etapa3ServicosIncluidos
   }
 
-  onChangeSelectCategoria(valor) {
-    this.servicoService.getSevicoPorCategoria(valor)
+  onChangeSelectCategoria(f) {
+    this.servicoService.getSevicoPorCategoria(f.value.categoria)
       .then(           
         (resposta: any) => {
           this.servicos = resposta
@@ -46,10 +49,13 @@ export class Etapa3Component implements OnInit {
   }
 
   incluirServico(f) {
-    if ( this.servicos_incluidos.length < this.cadastroService.etapa2Plano.qt_servico ) {
-      this.servicos_incluidos.push(f.value)
+    if ( this.servicos_incluidos.length < this.cadastroService.etapa2Plano_qt_servicos ) {
+      let servico = {
+        'servico': f.value.servico, 
+        'descricao': f.value.descricao,
+        'servico_id': this.servicos.find((servico) => servico.nome == f.value.servico).id }
+      this.servicos_incluidos.push(servico)
     }
-
   }
 
   removerServico(servico){

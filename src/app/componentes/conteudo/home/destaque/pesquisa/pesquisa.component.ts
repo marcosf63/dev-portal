@@ -16,10 +16,7 @@ import { ServicoService } from '../../../../../servicos/servico.service'
 export class PesquisaComponent implements OnInit {
 
   public categorias : Categoria[] = [];
-  public servicos: Servico[] = [];
-  @ViewChild('pesquisaForm') public formulario: NgForm
-  public valorSelectCategoria : String
-  public valorSelectServico: String
+  public servicos : Servico[] = [];
 
   constructor( 
     private categoriaService: CategoriaService,
@@ -32,27 +29,21 @@ export class PesquisaComponent implements OnInit {
     this.categoriaService.getCategorias()
       .then(
         (resposta: any) => {
-          this.categorias = resposta
+          this.categorias = resposta['categorias']
         }
       );
     
     
   }
   
-  onChangeSelectCategoria(valor) {
-    console.log(valor)
-    this.servicoService.getSevicoPorCategoria(valor)
-      .then(           
-        (resposta2: any) => {
-          this.servicos = resposta2
-          console.log(this.servicos)
-        }
-      )
+  onChangeSelectCategoria(f) {
+    this.servicoService.getSevicoPorCategoria(f.form.controls.categoriaSelect.value)
+      .then((resposta: any) => this.servicos = resposta )
+    
   }
 
   buscaServico(valor) {
-     this.router.navigateByUrl(`/resultadoPesquisaPro/${valor}`)
-
+    this.router.navigateByUrl(`/resultadoPesquisaPro/${valor}`)
   }
 
 }

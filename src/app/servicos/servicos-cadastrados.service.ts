@@ -10,10 +10,18 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ServicoCadastradoService {
+   
+    public servicos: any[]
+   
     constructor(private http: Http) {}
-    public getServicosCadastrados(id_servico): Promise<ServicoCadastrado[]> {
-        return this.http.get(`${apiUrl}/servicos_cadastrado?servico.id=${id_servico}`)
+
+    public getServicosCadastrados(id_servico): Promise<any> {
+        return this.http.get(`${apiUrl}/servicos_cadastrados?servico_id=${id_servico}`)
             .toPromise()
-            .then((resposta: any) => resposta.json());
+            .then(
+                (resposta: any) => {
+                    this.servicos = resposta.json()['servicos_cadastrados']
+                }
+            )
     }
 }

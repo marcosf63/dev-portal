@@ -1,5 +1,23 @@
-<form class="form-inline my-2 my-lg-0" novalidate>
-  <input class="form-control mr-sm-2" type="text" placeholder="Email" aria-label="Email">
-  <input class="form-control mr-sm-2" type="password" placeholder="Senha" aria-label="Senha">
-  <button class="btn btn-success my-2 my-sm-0" type="submit">Entrar</button>
-</form>
+<div *ngIf="usuario_logado===false">
+  <form #f="ngForm" (ngSubmit)="login(f)" class="form-inline my-2 my-lg-0" novalidate>
+   <input 
+    class="form-control mr-sm-2" 
+    type="text" 
+    placeholder="Email" 
+    aria-label="Email"
+    name="email"
+    ngModel>
+   <input 
+    class="form-control mr-sm-2" 
+    type="password" 
+    placeholder="Senha" 
+    aria-label="Senha"
+    name="senha"
+    ngModel>
+   <button class="btn btn-success my-2 my-sm-0" type="submit">Entrar</button>
+  </form>
+</div>
+<div *ngIf="usuario_logado===true">
+   {{ authService.nome }} 
+   <button type="button" class="btn btn-success" (click)="logof()">Sair</button>
+</div>  

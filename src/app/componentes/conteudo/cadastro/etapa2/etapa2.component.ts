@@ -13,8 +13,7 @@ import { CadastroService } from '../../../../servicos/cadastro.service'
 })
 export class Etapa2Component implements OnInit {
 
-  planos: Plano[] = []
-  public formularioInvalido: Boolean = false
+  planos: any[] = []
 
   constructor(
     private planoService: PlanoService,
@@ -25,25 +24,17 @@ export class Etapa2Component implements OnInit {
   ngOnInit() {
     this.planoService.getPlanosPorTipo(this.cadastroService.etapa1PfOuPj)
       .then(
-        (resposta: any) => this.planos = resposta 
+        (resposta: any) => {
+          this.planos = resposta['planos']
+        }
       )
       .catch((erro: any) => console.log("Erro corrido:" + erro))
   }
 
   etapa3(f) {
-     if (f.valid) {
-      this.planos.forEach(p => {
-        if (p.nome === f.value.plano) {
-          this.cadastroService.etapa2Plano = p
-        }
-      });
-      this.router.navigateByUrl('/cadastro/etapa3')
-     } else {
-        
-        this.formularioInvalido = true
-  
-     }
-
+    this.cadastroService.etapa2Plano_id = f.value.plano
+    this.cadastroService.etapa2Plano_qt_servicos = this.planos.find((plano) => plano.id == f.value.plano).qt_servico
+    this.router.navigateByUrl('/cadastro/etapa3')
   }
 
 }

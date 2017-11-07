@@ -22,8 +22,10 @@ import { Etapa3Component } from './componentes/conteudo/cadastro/etapa3/etapa3.c
 import { Etapa4Component } from './componentes/conteudo/cadastro/etapa4/etapa4.component';
 
 import { CadastroService } from './servicos/cadastro.service';
+import { AuthService } from './servicos/auth.service'
 import { FinalCadastroComponent } from './componentes/conteudo/cadastro/final-cadastro/final-cadastro.component';
 import { ConteudoComponent } from './componentes/conteudo/conteudo.component'
+import { ServicoCadastradoService } from './servicos/servicos-cadastrados.service'
 
 @NgModule({
   declarations: [
@@ -50,7 +52,7 @@ import { ConteudoComponent } from './componentes/conteudo/conteudo.component'
     RouterModule.forRoot(ROUTES),
     FormsModule
   ],
-  providers: [CadastroService],
+  providers: [CadastroService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

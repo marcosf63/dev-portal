@@ -7,13 +7,16 @@
           <h4 class="card-title">{{ plano.periodicidade }}</h4>
           <p class="card-text">
               {{ plano.descricao }}
+              <br>
+              Quantidade de Serviços: {{ plano.qt_servico }}
+              <br>
               Preço: R$ {{ plano.valor }}
           </p>
           <div class="form-check">
               <label class="form-check-label">
               <input type="radio" 
                      class="form-check-input" 
-                     value="{{ plano.nome }}" name="plano" ngModel
+                     value="{{ plano.id }}" name="plano" ngModel
                     required>
                      Selecionar
               </label>

@@ -8,8 +8,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ServicoService {
     constructor(private http: Http) {}
-    public getSevicoPorCategoria(categoria_nome: String): Promise<Servico[]> {
-        return this.http.get(`${apiUrl}/servicos?categoria.nome=${categoria_nome}`)
+    public getSevicoPorCategoria(categoria_id: Number): Promise<Servico[]> {
+        return this.http.get(`${apiUrl}/servico?categoria_id=${categoria_id}`)
             .toPromise()
             .then(
                 (resposta: any) => resposta.json()

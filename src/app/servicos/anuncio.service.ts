@@ -7,9 +7,9 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class AnuncioService {
     constructor(private http: Http) {}
-    public getAnuncios(): Promise<Anuncio[]> {
-        return this.http.get('http://localhost:3000/anuncios?in_exibir=S')
+    public getAnuncios(): any {
+        return this.http.get('http://localhost:5000/servicos_cadastrados')
             .toPromise()
-            .then((resposta: any) => resposta.json());
+            .then((resposta: any) => resposta.json())
     }
 }

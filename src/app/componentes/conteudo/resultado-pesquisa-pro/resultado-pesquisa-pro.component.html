@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h2>Resultado da pesquisa por {{ servico_buscado }}</h2>
+    <h2>Resultado da pesquisa por {{ busca }}</h2>
   </div>
       
     <div class="row">
@@ -9,17 +9,35 @@
         <thead class="thead-default">
           <th>Foto</th>
           <th>Nome</th>
+          <th>Descrição</th>
           <th>Dados para contato</th>
+          <th></th>
         </thead>
         
         <tbody>
             <tr *ngFor="let servico of servicos">
-                <td><img src="{{ servico.usuario.foto }}" width="60" height="80" alt=""></td>
-                <td>{{ servico.usuario.nome }} {{ servico.usuario.id }}</td>
+                <td><img src="{{ servico.foto }}" width="60" height="80" alt=""></td>
+                <td>{{ servico.usuario }}</td>
+                <td>{{ servico.descricao }}</td>
                 <td>
-                  <span class="badge badge-danger">Necessário login para acesso</span>
+                  <span *ngIf="!usuario_logado" class="badge badge-danger">Necessário login para acesso</span>
+                  <div *ngIf="usuario_logado">
+                    Email: {{ servico. email}} <br>
+                    Telefone Fixos : {{ servico.telefoneFixo1 }} 
+                    , {{ servico.telefoneFixo1 }} <br>
+                    Celulares: {{ servico.celular1 }}, {{ servico.celular2 }}
+                  </div>
+                </td>
+                <td>
+                  <button *ngIf="usuario_logado" 
+                          type="button" 
+                          class="btn btn-success"
+                          (click)="contratar(servico.id)"
+                          >Contratar
+                  </button>
                 </td>
             </tr>
+
             
         </tbody>
 

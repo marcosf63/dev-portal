@@ -10,14 +10,18 @@ import { Anuncio } from '../../../../modelos/anuncio.model';
 })
 export class AnunciosComponent implements OnInit {
 
-  public anuncios: Anuncio[];
+  public anuncios: any[] = []
 
   constructor(private anuncioService: AnuncioService) { }
 
   ngOnInit() {
     this.anuncioService.getAnuncios()
-      .then((anuncios: Anuncio[]) => {
-          this.anuncios = anuncios;
+      .then((resposta) => {
+
+        for (let i = 0; i < 4; i++) {
+          this.anuncios.push(resposta['servicos_cadastrados'][i])
+        }
+    
       })
       .catch(( param: any) => {
       });

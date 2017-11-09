@@ -1,0 +1,64 @@
+<div *ngIf="!existe_usuarios_a_aprovar" class="alert alert-warning" role="alert">
+    Não existem cadastros para aprovação.
+</div>
+<div *ngIf="existe_usuarios_a_aprovar">
+    <div class="container">
+        <div class="row">
+          <h2>Cadastros a seram aprovados</h2>
+        </div>
+            
+          <div class="row">
+            <table class="table">
+      
+              <thead class="thead-default">
+                <th>Foto</th>
+                <th>Nome</th>
+                <th>Dados para Contato</th>
+                <th>Servicos a serem prestados</th>
+                <th>Plano escolhido</th>
+                <th></th>
+              </thead>
+              
+              <tbody>
+                  <tr *ngFor="let usuario of usuarios">
+                      <td><img src="{{ usuario.foto }}" width="60" height="80" alt=""></td>
+                      <td>{{ usuario.nome }}</td>
+                      <td>
+                        Email: {{ usuario.email}} <br>
+                        Telefones:<br>
+                        {{ usuario.telefoneFixo1 }}<br>
+                        {{ usuario.telefoneFixo2 }}<br>
+                        {{ usuario.celular1 }}<br>
+                        {{ usuario.celular2 }}<br>
+                      </td>
+                      <td>
+                        <p *ngFor="let servico of usuario.servicos_cadastrados">
+                          Servico: {{ servico.servico}}
+                          Descricao: {{ servico.descricao }}
+                        </p>
+                          
+                      </td>
+                      <td>
+                         <p *ngFor="let contrato of usuario.contratos">
+                           Plano: {{ contrato.plano }} <br>
+                           Dia do Vencimento: {{ contrato.dia_vencimento }}
+                         </p>
+                      </td>
+                      <td>
+                        <button
+                                type="button" 
+                                class="btn btn-success"
+                                (click)="ativar(usuario.id)"
+                                >Aprovar
+                        </button>
+                      </td>
+                  </tr>
+      
+                  
+              </tbody>
+      
+            </table>
+          </div>
+      </div>
+</div>
+

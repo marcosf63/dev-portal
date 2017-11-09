@@ -55,7 +55,7 @@ export class CadastroService {
       this.etapa4celular1,
       this.etapa4celular2,
       "/assets/foto/nr_aleatorio.png",
-      "Ativo",
+      "Inativo",
       this.etapa1PfOuPj
     )
      

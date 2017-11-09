@@ -8,11 +8,35 @@ import { Etapa2Component } from './componentes/conteudo/cadastro/etapa2/etapa2.c
 import { Etapa3Component } from './componentes/conteudo/cadastro/etapa3/etapa3.component'
 import { Etapa4Component } from './componentes/conteudo/cadastro/etapa4/etapa4.component'
 import { FinalCadastroComponent } from './componentes/conteudo/cadastro/final-cadastro/final-cadastro.component'
+import { FinalConsumidorComponent } from './componentes/conteudo/cadastro/final-consumidor/final-consumidor.component'
+import { AprovarCadastroComponent } from './componentes/conteudo/aprovar-cadastro/aprovar-cadastro.component'
+import { RelatorioBuscaComponent } from './componentes/conteudo/relatorio-busca/relatorio-busca.component'
+import { AvaliarServicoComponent } from './componentes/conteudo/avaliar-servico/avaliar-servico.component'
+import { ConsultarServicoComponent } from './componentes/conteudo/consultar-servico/consultar-servico.component'
 
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent},
-    { path: 'resultadoPesquisaPro/:id', component: ResultadoPesquisaProComponent},
+    { 
+      path: 'resultadoPesquisaPro/:id', 
+      component: ResultadoPesquisaProComponent
+    },
+    { 
+      path: 'aprovar-cadastro', 
+      component: AprovarCadastroComponent
+    },
+    { 
+      path: 'relatorio-busca', 
+      component: RelatorioBuscaComponent
+    },
+    { 
+      path: 'avaliar-servico/:id', 
+      component: AvaliarServicoComponent
+    },
+    { 
+      path: 'consultar-servico/:id', 
+      component: ConsultarServicoComponent
+    },
     { 
       path: 'cadastro', 
       component: CadastroComponent,
@@ -40,6 +64,10 @@ export const ROUTES: Routes = [
           {
             path: 'final-cadastro',
             component: FinalCadastroComponent
+          },
+          {
+            path: 'final-consumidor',
+            component: FinalConsumidorComponent
           }
 
       ]

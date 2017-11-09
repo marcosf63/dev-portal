@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+      <h2>Relatorio de Buscas</h2>
+    </div>
+        
+      <div class="row">
+        <table class="table">
+  
+          <thead class="thead-default">
+            <th>Servico Pesquisado</th>
+            <th>Quantidade</th>
+          </thead>
+          
+          <tbody>
+              <tr *ngFor="let busca of buscas">
+                  <td>{{ busca.servico }}</td>
+                  <td>
+                     {{ busca.quantidade }}
+                  </td>
+                  
+              </tr>
+  
+              
+          </tbody>
+  
+        </table>
+      </div>
+  </div>

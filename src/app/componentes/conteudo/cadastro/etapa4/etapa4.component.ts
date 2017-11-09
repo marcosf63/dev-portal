@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CadastroService } from '../../../../servicos/cadastro.service'
+import { Router } from '@angular/router'
+import { AuthService } from '../../../../servicos/auth.service'
 
 @Component({
   selector: 'app-etapa4',
@@ -9,7 +11,11 @@ import { CadastroService } from '../../../../servicos/cadastro.service'
 })
 export class Etapa4Component implements OnInit {
 
-  constructor(private cadastroService: CadastroService) { }
+  constructor(
+    private cadastroService: CadastroService, 
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
   }
@@ -28,23 +34,19 @@ export class Etapa4Component implements OnInit {
     this.cadastroService.etapa4celular2 = f.value.celular2
     if (this.cadastroService.etapa1Prestatador == true){
       this.cadastroService.salvarUsuario()
-      .then( () => console.log("estou aqui"))
-      .catch( (erro) => console.log(erro))
+      .then( () => this.router.navigateByUrl('/cadastro/final-cadastro'))
+      .catch( (erro) => this.authService.mensagem = erro.json()['message'])
     } else {
       this.cadastroService.salvarConsumidor()
       .then(
-        () => console.log("comsumidor salvo ")
+        () => this.router.navigateByUrl('/cadastro/final-consumidor')
       ).catch(
-        (erro) => console.log(erro)
+        (erro) => this.authService.mensagem = erro.json()['message']
       )
     }
     
   }
 
-  // getFile(fileInput) {
-    
-  //   this.cadastroService.etapa4foto = fileInput.target.files[0]
-  //   console.log(this.cadastroService.etapa4foto)
-  // } 
+  
 
 }

@@ -1,4 +1,5 @@
 <div class="container">
+  <div *ngIf="!final_contratacao">
   <div class="row">
     <h2>Resultado da pesquisa por {{ busca }}</h2>
   </div>
@@ -7,6 +8,7 @@
       <table class="table">
 
         <thead class="thead-default">
+          <!-- <th></th> -->
           <th>Foto</th>
           <th>Nome</th>
           <th>Descrição</th>
@@ -15,11 +17,12 @@
         </thead>
         
         <tbody>
-            <tr *ngFor="let servico of servicos">
-                <td><img src="{{ servico.foto }}" width="60" height="80" alt=""></td>
-                <td>{{ servico.usuario }}</td>
-                <td>{{ servico.descricao }}</td>
-                <td>
+            <tr *ngFor="let servico of servicos" >
+                <!-- <td *ngIf="servico.situacao_usuario=='Ativo'">{{servico.situacao_usuario}}</td> -->
+                <td *ngIf="servico.situacao_usuario=='Ativo'"><img src="{{ servico.foto }}" width="60" height="80" alt=""></td>
+                <td *ngIf="servico.situacao_usuario=='Ativo'">{{ servico.usuario }}</td>
+                <td *ngIf="servico.situacao_usuario=='Ativo'">{{ servico.descricao }}</td>
+                <td *ngIf="servico.situacao_usuario=='Ativo'">
                   <span *ngIf="!usuario_logado" class="badge badge-danger">Necessário login para acesso</span>
                   <div *ngIf="usuario_logado">
                     Email: {{ servico. email}} <br>
@@ -28,7 +31,7 @@
                     Celulares: {{ servico.celular1 }}, {{ servico.celular2 }}
                   </div>
                 </td>
-                <td>
+                <td *ngIf="servico.situacao_usuario=='Ativo'">
                   <button *ngIf="usuario_logado" 
                           type="button" 
                           class="btn btn-success"
@@ -43,4 +46,12 @@
 
       </table>
     </div>
-</div>
+
+  </div>
+  <div *ngIf="final_contratacao">
+      <div class="alert alert-warning" role="alert">
+          Você acabou de contratar um servico. Aguarde a visita do profissional. 
+          <a routerLink="/">Clique aqui</a>s para voltar a página inicial
+        </div>
+  </div>
+  </div>

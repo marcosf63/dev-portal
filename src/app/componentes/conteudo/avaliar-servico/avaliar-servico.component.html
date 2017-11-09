@@ -1,0 +1,59 @@
+
+<div class="container">
+        <div class="row">
+          <h2>Avaliar Servicos Prestados</h2>
+        </div>
+            
+          <div class="row">
+            <table class="table">
+      
+              <thead class="thead-default">
+                <th>Foto</th>
+                <th>Nome do Prestador</th>
+                <th>Descrição do Servico Prestado</th>
+                <th>Avaliacao</th>
+                <th></th>
+              </thead>
+              
+              <tbody>
+                  <tr *ngFor="let sp of servicosPrestados">
+                      <td><img src="{{ sp.servico.foto }}" width="60" height="80" alt=""></td>
+                      <td>{{ sp.servico.usuario }}</td>
+                      <td>{{ sp.servico.descricao }}</td>
+                      <td>
+                        <form #f="ngForm">
+                            <div class="form-group">
+                                <select ngModel class="form-control" name="avaliacao">
+                                    <option >1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                        </form>
+                        
+                      </td>
+                      <td>
+                        <button 
+                                type="button" 
+                                class="btn btn-success"
+                                (click)="avaliar(f, sp.id)"
+                                >Avaliar
+                        </button>
+                      </td>
+                     
+                  </tr>
+                  
+                  
+              </tbody>
+      
+            </table>
+            
+          </div>
+          <div *ngIf="servicosPrestados.length==0" class="alert alert-warning" role="alert">
+              Não exitem serviços a avaliar.
+            </div>
+      </div>
+
+    

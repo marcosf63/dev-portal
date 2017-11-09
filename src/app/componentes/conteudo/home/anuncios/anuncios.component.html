@@ -6,8 +6,17 @@
           <h4 class="card-title">{{ anuncio.servico }}</h4>
           <h5>{{ anuncio.usuario }}</h5>
           <p class="card-text">{{ anuncio.descricao }}</p>
-          <a routerLink="/cadastro" class="btn btn-success " role="button" aria-pressed="true">Detalhes</a>
-       </div>
+          <div *ngIf="!usuario_logado">
+              <p style="color:rgb(13, 167, 33)">Faça login para obter os detalhes do profissional</p>
+          </div>
+          
+          
+          <div *ngIf="usuario_logado">
+            <p>{{ anuncio.email}}</p>
+            <p>{{ anuncio.celular1}}</p>
+          </div>
+          
+          </div>
       </div>
     </div>
 </div>

@@ -26,6 +26,12 @@ import { AuthService } from './servicos/auth.service'
 import { FinalCadastroComponent } from './componentes/conteudo/cadastro/final-cadastro/final-cadastro.component';
 import { ConteudoComponent } from './componentes/conteudo/conteudo.component'
 import { ServicoCadastradoService } from './servicos/servicos-cadastrados.service'
+import { BuscaService } from './servicos/busca.service';
+import { FinalConsumidorComponent } from './componentes/conteudo/cadastro/final-consumidor/final-consumidor.component';
+import { AprovarCadastroComponent } from './componentes/conteudo/aprovar-cadastro/aprovar-cadastro.component';
+import { RelatorioBuscaComponent } from './componentes/conteudo/relatorio-busca/relatorio-busca.component';
+import { AvaliarServicoComponent } from './componentes/conteudo/avaliar-servico/avaliar-servico.component';
+import { ConsultarServicoComponent } from './componentes/conteudo/consultar-servico/consultar-servico.component'
 
 @NgModule({
   declarations: [
@@ -44,7 +50,12 @@ import { ServicoCadastradoService } from './servicos/servicos-cadastrados.servic
     Etapa3Component,
     Etapa4Component,
     FinalCadastroComponent,
-    ConteudoComponent
+    ConteudoComponent,
+    FinalConsumidorComponent,
+    AprovarCadastroComponent,
+    RelatorioBuscaComponent,
+    AvaliarServicoComponent,
+    ConsultarServicoComponent
   ],
   imports: [
     BrowserModule,

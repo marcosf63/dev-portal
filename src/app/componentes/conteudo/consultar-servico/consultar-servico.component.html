@@ -1,0 +1,38 @@
+<div class="container">
+  <div *ngIf="servicos_prestados.length == 0">
+      <div class="alert alert-warning" role="alert">
+          Não existem serviços prestados.
+        </div>
+  </div>
+    <div class="row">
+        <table class="table">
+  
+          <thead class="thead-default">
+            <!-- <th></th> -->
+            <th>Data</th>
+            <th>Descricao do servico</th>
+            <th>Consumidor</th>
+            <th>Avaliacao</th>
+            <th>Status</th>
+          </thead>
+          
+          <tbody>
+              <tr *ngFor="let servico of servicos_prestados" >
+                  <!-- <td *ngIf="servico.situacao_usuario=='Ativo'">{{servico.situacao_usuario}}</td> -->
+                  <td>{{servico.data}}</td>
+                  <td >{{ servico.descricao }}</td>
+                  <td>{{ servico.usuario }}</td>
+                  <td>
+                      {{ servico.avalicao}}
+                  </td>
+                  <td>
+                    {{servico.status}}
+                  </td>
+              </tr>
+  
+              
+          </tbody>
+  
+        </table>
+      </div>
+</div>

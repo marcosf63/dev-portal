@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ServicoCadastrado } from '../../../modelos/servico_cadastrado.model'
 import { ServicoPrestadosService } from '../../../servicos/servicos-prestados.service'
 import { AuthService } from '../../../servicos/auth.service'
+import { BuscaService } from '../../../servicos/busca.service'
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/Rx'
 
@@ -11,29 +12,38 @@ import 'rxjs/Rx'
   selector: 'app-resultado-pesquisa-pro',
   templateUrl: './resultado-pesquisa-pro.component.html',
   styleUrls: ['./resultado-pesquisa-pro.component.css'],
-  providers: [ServicoCadastradoService, ServicoPrestadosService]
+  providers: [ServicoCadastradoService, ServicoPrestadosService, BuscaService]
 })
 export class ResultadoPesquisaProComponent implements OnInit {
   
   public usuario_logado: boolean = false
   public servicos: any[] = []
   public busca: string = ""
+  public final_contratacao: boolean = false
 
   constructor( 
     private route: ActivatedRoute,
     private servicosCadastrados: ServicoCadastradoService,
     private authService: AuthService,
-    private servicosPrestadosService: ServicoPrestadosService
+    private servicosPrestadosService: ServicoPrestadosService,
+    private buscaService: BuscaService
   ) { }
 
   ngOnInit() {
-    console.log(this.authService.access_token)
     let servico = this.route.snapshot.params['id'];
-    // let busca =   
+    let data = new Date()
+    let busca =  {
+      'data': `${data.getDate()}/${data.getMonth()}/${data.getFullYear()}`,
+      'servico_id': servico
+    }
+    
+    this.buscaService.registraBusca(busca).subscribe(
+      (resposta) => console.log("busca salva") 
+    )
+
     this.servicosCadastrados.getServicosCadastrados(servico)
      .then(
-       () => {
-          
+       () => { 
           this.servicos = this.servicosCadastrados.servicos
           console.log(this.servicos)
           this.busca = this.servicos[0].servico
@@ -65,6 +75,7 @@ export class ResultadoPesquisaProComponent implements OnInit {
     this.servicosPrestadosService.registraServicosPrestados(servico_prestado).subscribe(
       resposta => {
         console.log(resposta)
+        this.final_contratacao = true
       }
     )
 

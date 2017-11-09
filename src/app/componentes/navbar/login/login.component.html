@@ -15,9 +15,25 @@
     name="senha"
     ngModel>
    <button class="btn btn-success my-2 my-sm-0" type="submit">Entrar</button>
+   <a style="margin-left:5px"class="btn btn-success" routerLink="/cadastro/etapa1" role="button">Cadastrar-se</a>
   </form>
 </div>
 <div *ngIf="usuario_logado===true">
-   {{ authService.nome }} 
-   <button type="button" class="btn btn-success" (click)="logof()">Sair</button>
+   <!-- <button type="button" class="btn btn-success" (click)="logof()">Sair</button> -->
+
+   <div class="btn-group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Ações
+      </button>
+      <div class="dropdown-menu dropdown-menu-left">
+        <button *ngIf="consumidor" routerLink="avaliar-servico/{{authService.usuario_id}}" class="dropdown-item"  type="button">Avaliar Serviço</button>
+        <button *ngIf="prestador" routerLink="avaliar-servico/{{authService.usuario_id}}" class="dropdown-item"  type="button">Avaliar Serviço</button>
+        <button *ngIf="prestador" routerLink="consultar-servico/{{authService.usuario_id}}" class="dropdown-item" type="button">Consultar Servicos</button>
+        <button *ngIf="administrador" routerLink="aprovar-cadastro" class="dropdown-item" type="button" >Aprovar Cadastro</button>
+        <button *ngIf="administrador" class="dropdown-item" type="button" >Relatório de Pagamentos</button>
+        <button *ngIf="administrador" routerLink="relatorio-busca" class="dropdown-item" type="button" >Relatório de Busca</button>
+        <button class="dropdown-item" type="button" (click)="logof()">Sair</button>
+      </div>
+    </div>
+    {{ authService.nome }} 
 </div>  
